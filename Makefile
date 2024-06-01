@@ -11,7 +11,7 @@ REGRESS = $(patsubst test/sql/%.sql,%,$(TESTS))
 REGRESS_OPTS = --inputdir=test --load-extension=$(EXTENSION)
 
 # To compile for portability, run: make OPTFLAGS=""
-OPTFLAGS = -march=native
+OPTFLAGS = -march=native 
 
 # Mac ARM doesn't always support -march=native
 ifeq ($(shell uname -s), Darwin)
@@ -47,6 +47,8 @@ EXTRA_CLEAN = sql/$(EXTENSION)--$(EXTVERSION).sql
 PG_CONFIG ?= pg_config
 PGXS := $(shell $(PG_CONFIG) --pgxs)
 include $(PGXS)
+# PG_CONFIG = $(shell pwd)/wasm-build-deps/pg_config.py
+# PGXS = $(shell pwd)/wasm-build-deps/src/makefiles/pgxs.mk
 
 # for Mac
 ifeq ($(PROVE),)

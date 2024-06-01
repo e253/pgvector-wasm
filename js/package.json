@@ -1,0 +1,17 @@
+{
+  "name": "pgvector-wasm",
+  "module": "index.ts",
+  "type": "module",
+  "scripts": {
+    "build:configure-pg": "cd ../postgres/ && make -f ../js/Makefile configure-pg",
+    "build:vector": "cd .. && make -f ./js/Makefile vector",
+    "build:package": "cd .. && make -f ./js/Makefile package",
+    "build:clean": "cd .. && make -f ./js/Makefile clean"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  }
+}
